@@ -8,7 +8,9 @@ namespace HeboTech.NLF
 
         public static void SetLogger(ILogger logger)
         {
-            Log = logger ?? throw new ArgumentNullException(nameof(logger));
+            if (logger == null)
+                throw new ArgumentNullException(nameof(logger));
+            Log = logger;
         }
     }
 }

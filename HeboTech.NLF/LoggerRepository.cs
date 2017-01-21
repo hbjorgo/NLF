@@ -11,7 +11,9 @@ namespace HeboTech.NLF
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentNullException(nameof(name));
-            loggers[name] = logger ?? throw new ArgumentNullException(nameof(logger));
+            if (logger == null)
+                throw new ArgumentNullException(nameof(logger));
+            loggers[name] = logger;
         }
 
         public static void RemoveLogger(string name)
