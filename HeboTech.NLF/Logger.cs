@@ -10,9 +10,9 @@ namespace HeboTech.NLF
         public static void RegisterLogger(string name, ILogger logger)
         {
             if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentNullException("name");
+                throw new ArgumentNullException(nameof(name));
             if (logger == null)
-                throw new ArgumentNullException("logger");
+                throw new ArgumentNullException(nameof(logger));
             loggers[name] = logger;
         }
 
@@ -29,7 +29,7 @@ namespace HeboTech.NLF
         public static void SetDefaultLogger(ILogger logger)
         {
             if (logger == null)
-                throw new ArgumentNullException("logger");
+                throw new ArgumentNullException(nameof(logger));
             Default = logger;
         }
     }
