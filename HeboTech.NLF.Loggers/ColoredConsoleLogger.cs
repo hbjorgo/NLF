@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HeboTech.NLF.Loggers.TimeProvider;
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 
@@ -6,19 +7,23 @@ namespace HeboTech.NLF.Loggers
 {
     public class ColoredConsoleLogger : ILogger
     {
+        private ITimeProvider timeProvider;
         private ConsoleColor defaultForegroundColor;
         public LogLevel Level { get; private set; }
         public bool DisplayColors { get; private set; }
 
-        public ColoredConsoleLogger()
-            : this(LogLevel.DEBUG, false)
+        public ColoredConsoleLogger(ITimeProvider timeProvider)
+            : this(LogLevel.DEBUG, false, timeProvider)
         {
         }
 
-        public ColoredConsoleLogger(LogLevel level, bool displayColors)
+        public ColoredConsoleLogger(LogLevel level, bool displayColors, ITimeProvider timeProvider)
         {
             this.Level = level;
             this.DisplayColors = displayColors;
+            if (timeProvider == null)
+                throw new ArgumentNullException(nameof(timeProvider));
+            this.timeProvider = timeProvider;
             defaultForegroundColor = Console.ForegroundColor;
         }
 
@@ -32,7 +37,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.DEBUG)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(Format(DateTime.Now, "DEBUG", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "DEBUG", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
         }
@@ -42,7 +47,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.DEBUG)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine(Format(DateTime.Now, "DEBUG", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "DEBUG", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 Console.WriteLine(ex.Message);
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
@@ -53,7 +58,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.ERROR)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(Format(DateTime.Now, "ERROR", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "ERROR", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
         }
@@ -63,7 +68,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.ERROR)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(Format(DateTime.Now, "ERROR", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "ERROR", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 Console.WriteLine(ex.Message);
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
@@ -74,7 +79,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.FATAL)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(Format(DateTime.Now, "FATAL", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "FATAL", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
                 Console.Beep();
             }
@@ -85,7 +90,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.FATAL)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Magenta;
-                Console.WriteLine(Format(DateTime.Now, "FATAL", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "FATAL", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 Console.WriteLine(ex.Message);
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
@@ -96,7 +101,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.INFO)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(Format(DateTime.Now, "INFO", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "INFO", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
         }
@@ -106,7 +111,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.INFO)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine(Format(DateTime.Now, "INFO", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "INFO", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 Console.WriteLine(ex.Message);
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
@@ -117,7 +122,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.WARN)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(Format(DateTime.Now, "WARN", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "WARN", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
         }
@@ -127,7 +132,7 @@ namespace HeboTech.NLF.Loggers
             if (Level <= LogLevel.WARN)
             {
                 if (DisplayColors) Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine(Format(DateTime.Now, "WARN", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
+                Console.WriteLine(Format(timeProvider.GetTime(), "WARN", message, memberName, Path.GetFileName(sourceFilePath), sourceLineNumber));
                 Console.WriteLine(ex.Message);
                 if (DisplayColors) Console.ForegroundColor = defaultForegroundColor;
             }
