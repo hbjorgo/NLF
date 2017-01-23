@@ -17,3 +17,4 @@ test:
   assemblies: '**\*.Test.dll'
 artifacts:
 - path: HeboTech.NLF\bin\Release\HeboTech.NLF.dll
+- path: '*.nupkg'
