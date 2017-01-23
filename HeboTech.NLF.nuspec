@@ -10,7 +10,7 @@
         <description>.Net Logger Facade is a library that lets you use any logging library without changing your code.</description>
         <summary>.Net Logger Facade is a library that lets you use any logging library without changing your code.</summary>
         <language>en-US</language>
-        <tags>log, logger, logging, .net, nlf</tags>
+        <tags>hebotech, log, logger, logging, .net, nlf</tags>
     </metadata>
     <files>
         <file src="HeboTech.NLF\bin\Release\HeboTech.NLF.dll" target="lib\net45\HeboTech.NLF.dll" />
