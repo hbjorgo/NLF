@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+    <metadata>
+        <id>HeboTech.NLF</id>
+        <version>$version$</version>
+        <title>.Net Logger Facade</title>
+        <authors>Henning Bjørgo</authors>
+        <owners>HeboTech</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>.Net Logger Facade is a library that lets you use any logging library without changing your code.</description>
+        <summary>.Net Logger Facade is a library that lets you use any logging library without changing your code.</summary>
+        <language>en-US</language>
+        <tags>log, logger, logging, .net, nlf</tags>
+    </metadata>
+    <files>
+        <file src="HeboTech.NLF\bin\Release\HeboTech.NLF.dll" target="lib\net45\HeboTech.NLF.dll" />
+    </files>
+</package>
