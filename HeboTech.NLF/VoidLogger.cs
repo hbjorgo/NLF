@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace HeboTech.NLF
 {
-    public class NullLogger : ILogger
+    public class VoidLogger : ILogger
     {
         public void Debug(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
         {

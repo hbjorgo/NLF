@@ -1,5 +1,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using System;
 
 namespace HeboTech.NLF.Test
 {
@@ -7,15 +8,22 @@ namespace HeboTech.NLF.Test
     public class LoggerTest
     {
         [TestMethod]
-        public void DefaultLoggerIsNullLogger()
+        public void DefaultLoggerIsVoidLogger()
         {
             ILogger returnedLogger = Logger.Log;
 
-            Assert.AreEqual(returnedLogger.GetType(), typeof(NullLogger));
+            Assert.AreEqual(returnedLogger.GetType(), typeof(VoidLogger));
         }
 
         [TestMethod]
-        public void ChangingDefaultLogger()
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void SettingLoggerToNullThrowsException()
+        {
+            Logger.SetLogger(null);
+        }
+
+        [TestMethod]
+        public void SetLoggerChangesTheLogger()
         {
             ILogger logger = new Mock<ILogger>().Object;
             Logger.SetLogger(logger);

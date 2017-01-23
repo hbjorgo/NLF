@@ -45,7 +45,7 @@
     <Compile Include="Logger.cs" />
     <Compile Include="LoggerRepository.cs" />
     <Compile Include="LogLevel.cs" />
-    <Compile Include="NullLogger.cs" />
+    <Compile Include="VoidLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
