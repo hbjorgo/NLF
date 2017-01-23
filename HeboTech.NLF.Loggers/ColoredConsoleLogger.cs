@@ -4,18 +4,18 @@ using System.Runtime.CompilerServices;
 
 namespace HeboTech.NLF.Loggers
 {
-    public class ConsoleLogger : ILogger
+    public class ColoredConsoleLogger : ILogger
     {
         private ConsoleColor defaultForegroundColor;
         public LogLevel Level { get; private set; }
         public bool DisplayColors { get; private set; }
 
-        public ConsoleLogger()
+        public ColoredConsoleLogger()
             : this(LogLevel.DEBUG, false)
         {
         }
 
-        public ConsoleLogger(LogLevel level, bool displayColors)
+        public ColoredConsoleLogger(LogLevel level, bool displayColors)
         {
             this.Level = level;
             this.DisplayColors = displayColors;
