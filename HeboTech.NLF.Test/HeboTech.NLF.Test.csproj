@@ -57,6 +57,7 @@
   <ItemGroup>
     <Compile Include="LoggerRepositoryTest.cs" />
     <Compile Include="LoggerTest.cs" />
+    <Compile Include="LogLevelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
