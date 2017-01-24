@@ -3,6 +3,9 @@ using System.Runtime.CompilerServices;
 
 namespace HeboTech.NLF
 {
+    /// <summary>
+    /// Interface to log at various log levels.
+    /// </summary>
     public interface ILogger
     {
         /// <summary>
