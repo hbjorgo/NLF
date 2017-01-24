@@ -18,5 +18,4 @@ test:
 after_test:
 - cmd: nuget pack HeboTech.NLF.nuspec -version "%APPVEYOR_BUILD_VERSION%"
 artifacts:
-- path: HeboTech.NLF\bin\Release\HeboTech.NLF.dll
 - path: HeboTech.NLF.*.nupkg
