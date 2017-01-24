@@ -19,7 +19,7 @@ namespace HeboTech.NLF.Loggers.Test
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void PassingNullWriterAndLogLevelInConstructorThrowsException2()
+        public void PassingNullWriterInConstructorThrowsException2()
         {
             var timeProvider = new Mock<ITimeProvider>();
             new FormatLogger(LogLevel.DEBUG, null, timeProvider.Object);
@@ -35,7 +35,7 @@ namespace HeboTech.NLF.Loggers.Test
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void PassingNullTimeProviderAndLogLevelInConstructorThrowsException2()
+        public void PassingNullTimeProviderInConstructorThrowsException2()
         {
             var writer = new Mock<IWriter>();
             new FormatLogger(LogLevel.DEBUG, writer.Object, null);
@@ -50,7 +50,6 @@ namespace HeboTech.NLF.Loggers.Test
 
             Assert.AreEqual(LogLevel.DEBUG, logger.Level);
         }
-
         
         [TestMethod]
         public void DebugWritesDefaultFormattedMessage()
