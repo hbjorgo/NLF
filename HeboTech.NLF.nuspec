@@ -14,5 +14,6 @@
     </metadata>
     <files>
         <file src="HeboTech.NLF\bin\Release\HeboTech.NLF.dll" target="lib\net45\HeboTech.NLF.dll" />
+        <file src="HeboTech.NLF\bin\Release\HeboTech.NLF.xml" target="lib\net45\HeboTech.NLF.xml" />
     </files>
 </package>
