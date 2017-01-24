@@ -62,7 +62,7 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Debug("A", "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - DEBUG - C - Line 3 - B - A"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - DEBUG - C - Line 3 - B - A"), Times.Once);
         }
 
         [TestMethod]
@@ -75,8 +75,8 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Debug("A", new Exception("ExceptionMsg"), "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - DEBUG - C - Line 3 - B - A"));
-            writer.Verify(x => x.Write("ExceptionMsg"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - DEBUG - C - Line 3 - B - A"), Times.Once);
+            writer.Verify(x => x.Write("ExceptionMsg"), Times.Once);
         }
 
         [TestMethod]
@@ -89,7 +89,7 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Info("A", "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - INFO - C - Line 3 - B - A"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - INFO - C - Line 3 - B - A"), Times.Once);
         }
 
         [TestMethod]
@@ -102,8 +102,8 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Info("A", new Exception("ExceptionMsg"), "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - INFO - C - Line 3 - B - A"));
-            writer.Verify(x => x.Write("ExceptionMsg"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - INFO - C - Line 3 - B - A"), Times.Once);
+            writer.Verify(x => x.Write("ExceptionMsg"), Times.Once);
         }
 
         [TestMethod]
@@ -116,7 +116,7 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Warn("A", "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - WARN - C - Line 3 - B - A"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - WARN - C - Line 3 - B - A"), Times.Once);
         }
 
         [TestMethod]
@@ -129,8 +129,8 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Warn("A", new Exception("ExceptionMsg"), "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - WARN - C - Line 3 - B - A"));
-            writer.Verify(x => x.Write("ExceptionMsg"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - WARN - C - Line 3 - B - A"), Times.Once);
+            writer.Verify(x => x.Write("ExceptionMsg"), Times.Once);
         }
 
         [TestMethod]
@@ -143,7 +143,7 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Error("A", "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - ERROR - C - Line 3 - B - A"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - ERROR - C - Line 3 - B - A"), Times.Once);
         }
 
         [TestMethod]
@@ -156,8 +156,8 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Error("A", new Exception("ExceptionMsg"), "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - ERROR - C - Line 3 - B - A"));
-            writer.Verify(x => x.Write("ExceptionMsg"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - ERROR - C - Line 3 - B - A"), Times.Once);
+            writer.Verify(x => x.Write("ExceptionMsg"), Times.Once);
         }
 
         [TestMethod]
@@ -170,7 +170,7 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Fatal("A", "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - FATAL - C - Line 3 - B - A"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - FATAL - C - Line 3 - B - A"), Times.Once);
         }
 
         [TestMethod]
@@ -183,8 +183,8 @@ namespace HeboTech.NLF.Loggers.Test
 
             logger.Fatal("A", new Exception("ExceptionMsg"), "B", "C", 3);
 
-            writer.Verify(x => x.Write("20.12.2016 12.00.00 - FATAL - C - Line 3 - B - A"));
-            writer.Verify(x => x.Write("ExceptionMsg"));
+            writer.Verify(x => x.Write("20.12.2016 12.00.00 - FATAL - C - Line 3 - B - A"), Times.Once);
+            writer.Verify(x => x.Write("ExceptionMsg"), Times.Once);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace HeboTech.NLF.Loggers
 
         protected virtual string Format(DateTime timeStamp, string severity, string message, string memberName, string sourceFilePath, int sourceLineNumber)
         {
-            return string.Format("{0} - {1} - {2} - Line {3} - {4} - {5}", timeStamp, severity, Path.GetFileName(sourceFilePath), sourceLineNumber, memberName, message);
+            return string.Format("{0} - {1} - {2} - Line {3} - {4} - {5}", timeStamp.ToString("dd.MM.yyyy hh.mm.ss"), severity, Path.GetFileName(sourceFilePath), sourceLineNumber, memberName, message);
         }
 
         public void Debug(string message, [CallerMemberName] string memberName = "", [CallerFilePath] string sourceFilePath = "", [CallerLineNumber] int sourceLineNumber = 0)
